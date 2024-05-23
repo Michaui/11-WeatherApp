@@ -23,7 +23,7 @@ searchBtn.addEventListener("click", () => {
     getWeatherByZip(locationFieldValue); 
   } 
   //Wenn locationFieldValue nur Text bzw. Stadt ist 
-  if(/[a-zA-Z]/.test(locationFieldValue)){
+  if(/[a-zA-Z]/.test(locationFieldValue) && locationFieldValue !== ''){
     //getWeather({q:'Mainz'})
     getWeather({q:locationFieldValue})
   }
