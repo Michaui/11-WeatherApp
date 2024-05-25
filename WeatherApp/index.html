@@ -13,19 +13,25 @@
       <div class="panel">
         <p id="locationState">Standort</p>
         <p id="weatherState">Sunny</p>
-        <p id="tempState">Celsius 16</p>
-        <p id="tempStateFar">Celsius 16</p>
-        <button id="changeUnit">Change Unit</button>
+
+        <label class="switch">
+          <input class="toggleSwitch" type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+        <p id="status"></p>
+        <img src="img/giphy.gif" class="img" alt="" />
+        <p id="support">Label</p>
+
         <img src="" alt="" id="weatherImgState" />
       </div>
-      <div class="forcast">
+      <!-- <div class="forcast">
         <div class="tomorrow">
-          <p id="support">Label</p>
+          
           <p id="tomTempState01">Label</p>
           <p id="tomTempState02">Label</p>
           <img src="" alt="" id="tomWeatherImgState" />
         </div>
-      </div>
+      </div> -->
     </div>
     <script type="module" src="/main.js"></script>
   </body>
