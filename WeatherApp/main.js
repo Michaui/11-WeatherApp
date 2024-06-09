@@ -1,4 +1,4 @@
-import "./style.css";
+import "./style.scss";
 import { init, latitude, longitude, isInitialized } from "./location.js";
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 // console.log(latitude, longitude); // Auf die latitude und longitude zugreifen
 
-//.value macht hier kein Sinn, weil zum Zeitpunkt vom Seitenaufruf nichts drin steht.
+//.value macht hier kein Sinn, weil zum Zeitpun☺kt vom Seitenaufruf nichts drin steht.
 //let locationField = document.getElementById('locationField').value;
 let locationField = document.getElementById("locationField");
 locationField.addEventListener("keypress", handleEvent);
@@ -72,28 +72,37 @@ async function getWeather(queryPara) {
   showWeatherData(dataWeather);
 }
 
+// const search = new URLSearchParams(searchPara); HIER
+
+// search.append("q:", searchPara); HIER
+// search.append("api_key:", import.meta.env.VITE_GIPHY_API_KEY); HIER
+
+// const giphyData = await fetch(`api.giphy.com/v1/gifs/search${searchPara.toString()}`).then(response => response.json())
+// .then(console.log)
+
+//   const test = await fetch(`https://api.giphy.com/v1/gifs/search/${search.toString()}`); HIER
+// console.log(test);
+
 async function getGiphyImage(searchPara) {
-  // const search = new URLSearchParams(searchPara); HIER
-
-  // search.append("q:", searchPara); HIER
-  // search.append("api_key:", import.meta.env.VITE_GIPHY_API_KEY); HIER
-
-  // const giphyData = await fetch(`api.giphy.com/v1/gifs/search${searchPara.toString()}`).then(response => response.json())
-  // .then(console.log)
-
-  //   const test = await fetch(`https://api.giphy.com/v1/gifs/search/${search.toString()}`); HIER
-  // console.log(test);
-
   const giphyData = await fetch(
-    `https://api.giphy.com/v1/gifs/search?q=${searchPara}&api_key=${
+    `https://api.giphy.com/v1/gifs/search?q=weather-${searchPara}&limit=1&api_key=${
       import.meta.env.VITE_GIPHY_API_KEY
     }`
   );
 
-  const giphyResponse = await giphyData.json();
+  let img = document.getElementById("imgDiv");
 
-  console.log(giphyResponse);
+  if(giphyData.ok && img){    
+    let giphyImgs = await giphyData.json();
+    // console.log(giphyImgs.data[2].images.fixed_height.url);
+    // img.src = giphyImgs.data[2].images.fixed_height.url;
+    //LIMI auf 1 gesetzt, demnach Array auf 0 
+    img.src = giphyImgs.data[0].images.fixed_height.url;
+  } else {
+    console.log("FEHLER")
+  }
 }
+
 
 /*
 Wenn das JSON der Funktion übergeben wird, muss das JSON nicht aufgelöst werden, weil .then() eine funktion eines promise ist -> Dass die gleiche Funktion hat, wie das promise.
@@ -105,6 +114,7 @@ fetch() ist asynchron: Die fetch-Funktion ruft eine Netzwerkanfrage ab und gibt 
 Response.json() ist ebenfalls asynchron: Die Methode json() des Response-Objekts liest den Body der Antwort und gibt ebenfalls ein Promise zurück, das mit den geparsten JSON-Daten aufgelöst wird.
 */
 
+
 //OBJEKT WRAPPER
 // getWeatherByZip({zip: "94040,us}) => getWeatherByZip("94040,us")
 async function getWeatherByZip(countryCode) {
@@ -112,6 +122,7 @@ async function getWeatherByZip(countryCode) {
   // return getWeather({ zip: countryCode });
   getWeather({ zip: countryCode });
 }
+
 
 const toggleSwitch = document.querySelector(".toggleSwitch");
 let tempStateFar;

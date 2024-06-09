@@ -7,24 +7,27 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div class="background">
+    <div class="searchWrap">
       <input type="text" id="locationField" />
       <button id="searchBtn">Search</button>
-      <div class="panel">
-        <p id="locationState">Standort</p>
-        <p id="weatherState">Sunny</p>
+    </div>
+    <div class="frame">
+      <div class="background">
+        <div class="panel">
+          <p id="locationState">Standort</p>
+          <p id="weatherState">Sunny</p>
 
-        <label class="switch">
-          <input class="toggleSwitch" type="checkbox" />
-          <span class="slider round"></span>
-        </label>
-        <p id="status"></p>
-        <img src="img/giphy.gif" class="img" alt="" />
-        <p id="support">Label</p>
+          <label class="switch">
+            <input class="toggleSwitch" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+          <p id="status"></p>
+          <img id="imgDiv" src="img/giphy.gif" class="img" alt="" />
+          <p id="support">Label</p>
 
-        <img src="" alt="" id="weatherImgState" />
-      </div>
-      <!-- <div class="forcast">
+          <img src="" alt="" id="weatherImgState" />
+        </div>
+        <!-- <div class="forcast">
         <div class="tomorrow">
           
           <p id="tomTempState01">Label</p>
@@ -32,6 +35,7 @@
           <img src="" alt="" id="tomWeatherImgState" />
         </div>
       </div> -->
+      </div>
     </div>
     <script type="module" src="/main.js"></script>
   </body>

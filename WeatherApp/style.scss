@@ -24,11 +24,24 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  display: grid;
+  flex-direction: column;
+  justify-content: center;
+
+  .searchWrap{
+    margin: 50px 0;
+    background-color: #ffffff;
+
+    input{
+      height: 24px; 
+      width: 250px; 
+      padding: 12px; 
+      margin-right: 12px;
+    }
+  }
 }
+
+
 
 h1 {
   font-size: 3.2em;
@@ -75,6 +88,15 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.frame{
+  height: 80vh;
+  width: 50vw;
+  background-color: #2196F3;
+  display: grid; 
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
 
 /* TOGGLE-WRAPPER */
 .switch {
